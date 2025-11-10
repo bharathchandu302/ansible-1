@@ -1,13 +1,14 @@
-- name: stopping and uninstall
+- name: Uninstall NGINX
   hosts: frontend
   become: yes
   tasks:
-  - name: stopping the nginx
-    ansible.builtin.service:
-     name: nginx
-     state: stopped
-  - name: uninstall the nginx
-    ansible.builtin.package:
-      name: nginx
-      status: absent
-      
+    - name: Stop nginx service if running
+      ansible.builtin.service:
+        name: nginx
+        state: stopped
+      ignore_errors: yes
+
+    - name: Uninstall nginx package
+      ansible.builtin.package:
+        name: nginx
+        state: absent
