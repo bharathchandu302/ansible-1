@@ -1,0 +1,13 @@
+- name: stopping and uninstall
+  hosts: frontend
+  become: yes
+  tasks:
+  - name: stopping the nginx
+    ansible.builtin.service:
+     name: nginx
+     state: stopped
+  - name: uninstall the nginx
+    ansible.builtin.package:
+      name: nginx
+      status: absent
+      
