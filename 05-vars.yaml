@@ -1,6 +1,6 @@
 - name: paly level variables
   hosts: local
-  connection: local
+  connection: local # Ansible is connecting to localhost
   vars:
    COURSE: ansible
    DURATION: 10HRS
@@ -9,4 +9,4 @@
   - name: print the course info
   ansible.builtin.debug:
     msg: "Course Name is: {{COURSE}}, Duration: {{DURATION}}, Trainer: {{TRAINER}}"
-    
+
